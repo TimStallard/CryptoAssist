@@ -9,6 +9,14 @@ body{
   flex-direction: column;
 }
 
+#blocks{
+  display: flex;
+  flex-direction: row;
+  .block{
+    margin: 10px;
+  }
+}
+
 .block{
   width: 200px;
   height: 200px;
@@ -19,6 +27,7 @@ body{
     display: flex;
     flex-direction: row;
     >div{
+      font-weight: bold;
       border: 1px solid black;
       flex-grow: 1;
       text-align: center;
@@ -37,6 +46,7 @@ body{
     }
   }
   >.output{
+    font-weight: bold;
     border: 1px solid black;
     text-align: center;
     padding-top: 5px;
@@ -48,7 +58,5 @@ body{
   position: relative;
   .block{
     position: absolute;
-    top: 40px;
-    left: 40px;
   }
 }

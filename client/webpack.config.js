@@ -24,6 +24,14 @@ module.exports = {
         }, {
           loader: "sass-loader"
         }]
+      },
+      {
+        test: /\.hbs$/,
+        use: [
+          {
+            loader: "handlebars-loader"
+          }
+        ]
       }
     ]
   }

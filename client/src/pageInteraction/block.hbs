@@ -1,0 +1,18 @@
+<div class="block">
+  <div class="inputs">
+    {{#each inputs as |desc name|}}
+      <div id="{{name}}">{{desc}}</div>
+    {{/each}}
+  </div>
+  <div class="main">
+    <div>
+      <div class="title">{{name}}</div>
+      {{{pageBlock.html}}}
+    </div>
+  </div>
+  {{#if output}}
+    <div class="output">
+      Output
+    </div>
+  {{/if}}
+</div>
