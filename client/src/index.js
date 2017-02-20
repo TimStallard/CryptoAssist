@@ -1,1 +1,1 @@
-alert("Hello World 2");
+require("./styles.scss");

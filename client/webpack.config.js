@@ -12,5 +12,21 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html"
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "sass-loader"
+        }]
+      }
+    ]
+  }
 }
+
+//SASS code from https://github.com/jtangelder/sass-loader licensed under MIT, see https://github.com/jtangelder/sass-loader/blob/master/LICENSE

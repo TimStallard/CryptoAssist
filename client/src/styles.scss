@@ -1,0 +1,54 @@
+html, body{
+  margin: 0;
+  border: 0;
+  font-family: sans-serif;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+.block{
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  .inputs{
+    display: flex;
+    flex-direction: row;
+    >div{
+      border: 1px solid black;
+      flex-grow: 1;
+      text-align: center;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+  .main{
+    flex-grow: 1;
+    display: flex;
+    >div{
+      margin: auto;
+      >.title{
+        text-align: center;
+      }
+    }
+  }
+  >.output{
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+#workspace{
+  position: relative;
+  .block{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+}
