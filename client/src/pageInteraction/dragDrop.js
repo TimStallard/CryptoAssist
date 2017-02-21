@@ -4,7 +4,8 @@ var $ = require("jquery");
 var uuid = require("node-uuid");
 
 function blockPositionChange(event){
-  for(var block of diagram.state.filter((block)=>(block.dragging))){
+  var block = diagram.state.filter((block)=>(block.dragging))[0];
+  if(block){
     block.position.x = event.pageX - $("#workspace").position().left - block.offset.x;
     block.position.y = event.pageY - $("#workspace").position().top - block.offset.y;
 
@@ -24,8 +25,8 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
     },
     dragging: true,
     offset: {
-      x: event.pageX - $(this).parent().offset().left,
-      y: event.pageY - $(this).parent().offset().top
+      x: event.offsetX,
+      y: event.offsetY
     },
     type: $(this).parent().data("type")
   }
