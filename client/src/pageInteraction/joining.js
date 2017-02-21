@@ -1,5 +1,6 @@
 var blocks = require("../blocks");
 var diagram = require("../diagram.js");
+var events = require("../events.js");
 var $ = require("jquery");
 
 function moveLine(elem, a, b, c, d){
@@ -11,7 +12,7 @@ function moveLine(elem, a, b, c, d){
   $(elem).css({
     left: x,
     top: y,
-    width: l - 2,
+    width: l,
     transform: "rotate(" + theta + "rad)"
   });
 }
@@ -33,7 +34,7 @@ $("#workspace").on("mousedown", ".block>.output", function(event){
 $(document).on("mousemove", function(event){
   if(dragging){
     lineEnd = [event.pageX - $("#workspace").offset().left, event.pageY - $("#workspace").offset().top];
-    moveLine($(".line"), lineStart[0], lineStart[1], lineEnd[0], lineEnd[1]);
+    moveLine($("#joiningLine"), lineStart[0], lineStart[1], lineEnd[0], lineEnd[1]);
   }
 });
 
@@ -48,14 +49,17 @@ $("#workspace").on("mouseup", ".block>.inputs>div", function(event){
   if(dragging){
     endBlock = $(this).parent().parent().attr("id");
     endInput = $(this).attr("id");
-    console.log(startBlock, endBlock, endInput);
     var endBlockInstance = diagram.state.filter((block)=>(block.id == endBlock))[0];
     endBlockInstance.inputs[endInput] = startBlock;
     drawJoiningLines();
   }
 });
 
+events.subscribe("blockMove", drawJoiningLines);
+events.subscribe("blockDelete", drawJoiningLines);
+
 function drawJoiningLines(){
+  $(".line").remove();
   for(var endBlock of diagram.state){
     for(var input in endBlock.inputs){
       startBlockId = endBlock.inputs[input];

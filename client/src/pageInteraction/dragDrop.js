@@ -1,5 +1,6 @@
 var blocks = require("../blocks");
 var diagram = require("../diagram.js");
+var events = require("../events.js");
 var $ = require("jquery");
 var uuid = require("node-uuid");
 
@@ -13,6 +14,8 @@ function blockPositionChange(event){
       left: block.position.x,
       top: block.position.y,
     });
+
+    events.emit("blockMove");
   }
 }
 
@@ -61,15 +64,23 @@ $(document).on("mousemove", function(event){
   blockPositionChange(event);
 });
 
-$("#workspace").on("mousedown", ".block", function(event){
+$("#workspace").on("mousedown", ".block>.main", function(event){
   if(event.which == 3){ //right mouse button, delete
     event.preventDefault();
     for(var i in diagram.state){
-      if(diagram.state[i].id == $(this).attr("id")){
+      if(diagram.state[i].id == $(this).parent().attr("id")){
         diagram.state.splice(i, 1);
       }
     }
-    $(this).remove();
+    for(var block of diagram.state){
+      for(var input in block.inputs){
+        if(block.inputs[input] == $(this).parent().attr("id")){
+          delete block.inputs[input];
+        }
+      }
+    }
+    $(this).parent().remove();
+    events.emit("blockDelete");
   }
 });
 
