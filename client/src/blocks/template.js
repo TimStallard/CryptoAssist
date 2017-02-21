@@ -1,7 +1,8 @@
 module.exports =  {
   name: "Example Block",
   inputs: {
-    input1: "Input 1"
+    input1: "Input 1",
+    input2: "Input 2"
   },
   output: true,
   execute: function({input1}, elem){

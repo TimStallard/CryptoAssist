@@ -28,7 +28,8 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
       x: event.pageX - $(this).parent().offset().left,
       y: event.pageY - $(this).parent().offset().top
     },
-    type: $(this).parent().data("type")
+    type: $(this).parent().data("type"),
+    inputs: {}
   }
   diagram.state.push(newBlock);
   var newBlockElement = $(

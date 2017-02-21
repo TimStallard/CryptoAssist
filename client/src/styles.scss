@@ -60,4 +60,9 @@ body{
   .block{
     position: absolute;
   }
+  .line{
+    border-top: 2px solid black;
+    position: absolute;
+    z-index: 1;
+  }
 }
