@@ -5,7 +5,7 @@ module.exports =  {
   },
   output: false,
   execute: function({input}, block){
-    $(elem).find("div.output").html(input1);
+    $(block.elem).find("span.output").html(input);
   },
   pageBlock: {
     html: "<span class='output'></span>",

@@ -41,6 +41,8 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
       instance: newBlock
     })
   ).appendTo("#workspace");
+  newBlock.elem = newBlockElement;
+  blocks[newBlock.type].pageBlock.js(newBlock);
   blockPositionChange(event);
 });
 

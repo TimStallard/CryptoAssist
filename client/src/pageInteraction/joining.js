@@ -52,6 +52,7 @@ $("#workspace").on("mouseup", ".block>.inputs>div", function(event){
     var endBlockInstance = diagram.state.filter((block)=>(block.id == endBlock))[0];
     endBlockInstance.inputs[endInput] = startBlock;
     drawJoiningLines();
+    events.emit("newJoin");
   }
 });
 
