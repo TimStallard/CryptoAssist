@@ -25,8 +25,8 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
     },
     dragging: true,
     offset: {
-      x: event.offsetX,
-      y: event.offsetY
+      x: event.pageX - $(this).parent().offset().left,
+      y: event.pageY - $(this).parent().offset().top
     },
     type: $(this).parent().data("type")
   }
