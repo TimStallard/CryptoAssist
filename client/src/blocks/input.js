@@ -4,7 +4,7 @@ module.exports =  {
   },
   output: true,
   execute: function({}, block){
-    block.find("input[name='input']").val();
+    return block.find("input[name='input']").val();
   },
   pageBlock: {
     html: "<input type='text' name='input'></input>",

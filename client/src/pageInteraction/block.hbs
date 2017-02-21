@@ -1,16 +1,16 @@
-<div class="block">
+<div class="block" data-type="{{block.type}}" id="{{instance.id}}">
   <div class="inputs">
-    {{#each inputs as |desc name|}}
+    {{#each block.inputs as |desc name|}}
       <div id="{{name}}">{{desc}}</div>
     {{/each}}
   </div>
   <div class="main">
     <div>
-      <div class="title">{{name}}</div>
-      {{{pageBlock.html}}}
+      <div class="title">{{block.name}}</div>
+      {{{block.pageBlock.html}}}
     </div>
   </div>
-  {{#if output}}
+  {{#if block.output}}
     <div class="output">
       Output
     </div>
