@@ -1,11 +1,14 @@
 module.exports =  {
-  name: "Example Block",
+  name: "Reverse",
   inputs: {
     input: "Input"
   },
   output: true,
   execute: function({input}, elem){
-    return input;
+    return input
+    .split("")
+    .reverse()
+    .join("");
   },
   pageBlock: {
     html: "",

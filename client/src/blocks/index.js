@@ -1,5 +1,25 @@
-module.exports = {
-  input: require("./input.js"),
-  output: require("./output.js"),
-  concat: require("./concat.js")
-}
+var blocks = [
+  "input",
+  "output",
+  "reverse",
+  "numsToLetters",
+  "lettersToNums",
+  "hexToAscii",
+  "asciiToHex",
+  "vigenereEncode",
+  "vigenereDecode",
+  "caesar",
+  "affineEncrypt",
+  "affineDecrypt",
+  "atbash",
+  "numbersToElements",
+  "elementsToNumbers",
+  "transposition",
+  "transpositionReverse",
+  "substitution",
+];
+
+module.exports = blocks.reduce((blocks, block)=>{
+  blocks[block] = require("./" + block + ".js");
+  return blocks;
+}, {});

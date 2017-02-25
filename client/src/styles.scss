@@ -12,6 +12,7 @@ body{
 #blocks{
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
   .block{
     margin: 10px;
   }
@@ -23,6 +24,7 @@ body{
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   background-color: white;
   .inputs{
     display: flex;
