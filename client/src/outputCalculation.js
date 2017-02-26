@@ -22,7 +22,7 @@ function resolveOutput(block, cache){
 
 function calculateOutputBlocks(){
   var cache = {};
-  var outputBlocks = diagram.state.filter((block)=>(block.type == "output"));
+  var outputBlocks = diagram.state.filter((block)=>((block.type == "output") || (block.type == "frequency")));
   for(var block of outputBlocks){
     resolveOutput(block, cache);
   }

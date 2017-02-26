@@ -32,7 +32,8 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
       y: event.pageY - $(this).parent().offset().top
     },
     type: $(this).parent().data("type"),
-    inputs: {}
+    inputs: {},
+    properties: {}
   }
   diagram.state.push(newBlock);
   var newBlockElement = $(
@@ -42,6 +43,12 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
     })
   ).appendTo("#workspace");
   newBlock.elem = newBlockElement;
+  if(blocks[newBlock.type].size){
+    newBlockElement.css({
+      height: blocks[newBlock.type].size.height,
+      width: blocks[newBlock.type].size.width
+    });
+  }
   blocks[newBlock.type].pageBlock.js(newBlock);
   blockPositionChange(event);
 });
