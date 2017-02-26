@@ -1,5 +1,5 @@
 module.exports = {
-  name: "",
+  name: "New Diagram",
   state: [],
   snapshots: []
 };

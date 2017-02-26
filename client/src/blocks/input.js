@@ -6,12 +6,16 @@ module.exports =  {
   },
   output: true,
   execute: function({}, block){
-    return block.elem.find("input[name='input']").val();
+    return block.properties.value;
   },
   pageBlock: {
     html: "<input type='text' name='input'></input>",
     js: function(block){
+      if(block.properties.value){
+        block.elem.find("input[name='input']").val(block.properties.value);
+      }
       $(block.elem).find("input[name='input']").keyup(function(){
+        block.properties.value = block.elem.find("input[name='input']").val();
         events.emit("inputChanged");
       });
     }

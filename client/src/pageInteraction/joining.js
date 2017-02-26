@@ -1,5 +1,5 @@
 var blocks = require("../blocks");
-var diagram = require("../diagram.js");
+var diagram = require("../diagram");
 var events = require("../events.js");
 var $ = require("jquery");
 
@@ -58,6 +58,7 @@ $("#workspace").on("mouseup", ".block>.inputs>div", function(event){
 
 events.subscribe("blockMove", drawJoiningLines);
 events.subscribe("blockDelete", drawJoiningLines);
+events.subscribe("diagramImport", drawJoiningLines);
 
 function drawJoiningLines(){
   $(".line").remove();

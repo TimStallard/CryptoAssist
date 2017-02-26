@@ -1,4 +1,4 @@
-var diagram = require("./diagram.js");
+var diagram = require("./diagram");
 var events = require("./events.js");
 var blocks = require("./blocks");
 
@@ -14,7 +14,10 @@ function resolveOutput(block, cache){
     }
   }
 
-  var output = blocks[block.type].execute(inputValues, block);
+  var output = "";
+  if(Object.keys(blocks[block.type].inputs).length == Object.keys(inputValues).length){
+    var output = blocks[block.type].execute(inputValues, block);
+  }
   cache[block.id] = output;
 
   return output;
@@ -30,5 +33,6 @@ function calculateOutputBlocks(){
 
 events.subscribe("inputChanged", calculateOutputBlocks);
 events.subscribe("newJoin", calculateOutputBlocks);
+events.subscribe("diagramImport", calculateOutputBlocks);
 
 window.calculate = calculateOutputBlocks;

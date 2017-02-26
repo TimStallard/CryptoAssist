@@ -9,6 +9,12 @@ body{
   flex-direction: column;
 }
 
+#header{
+  #importUpload{
+    display: none;
+  }
+}
+
 #blocks{
   display: flex;
   flex-direction: row;

@@ -1,5 +1,5 @@
 var blocks = require("../blocks");
-var diagram = require("../diagram.js");
+var diagram = require("../diagram");
 var events = require("../events.js");
 var $ = require("jquery");
 var uuid = require("node-uuid");
@@ -36,20 +36,7 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
     properties: {}
   }
   diagram.state.push(newBlock);
-  var newBlockElement = $(
-    require("./block.hbs")({
-      block: blocks[newBlock.type],
-      instance: newBlock
-    })
-  ).appendTo("#workspace");
-  newBlock.elem = newBlockElement;
-  if(blocks[newBlock.type].size){
-    newBlockElement.css({
-      height: blocks[newBlock.type].size.height,
-      width: blocks[newBlock.type].size.width
-    });
-  }
-  blocks[newBlock.type].pageBlock.js(newBlock);
+  require("./addBlockToPage.js")(newBlock);
   blockPositionChange(event);
 });
 

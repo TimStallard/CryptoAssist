@@ -63,13 +63,11 @@ module.exports =  {
       //first
       topGroups = topGroupsByFrequency(getFrequency(getFirstLetters(input, parseInt(block.properties.type))));
     }
-    block.properties.chartTop.data.labels = topGroups.labels;
-    block.properties.chartTop.data.datasets[0] = {
+    $(block.elem).data("chartTop").data.labels = topGroups.labels;
+    $(block.elem).data("chartTop").data.datasets[0] = {
       data: topGroups.values
     };
-    block.properties.chartTop.update();
-
-    return input;
+    $(block.elem).data("chartTop").update();
   },
   size: { //update static widths in HTML as well
     height: 400,
@@ -78,10 +76,10 @@ module.exports =  {
   pageBlock: {
     html: `
       <select>
-      <option value="1">Single Letters</option>
-      <option value="2">Digraphs</option>
-      <option value="3">Trigraphs</option>
-      <option value="first">1st Letter</option>
+        <option value="1">Single Letters</option>
+        <option value="2">Digraphs</option>
+        <option value="3">Trigraphs</option>
+        <option value="first">1st Letter</option>
       </select>
       <span class="topHidden">
         <div class="canvasContainer">
@@ -113,17 +111,17 @@ module.exports =  {
         var standardFrequency = standardFrequencies[block.properties.type];
         var standardGroups = topGroupsByFrequency(standardFrequency, true);
 
-        block.properties.chartBottom.data.labels = standardGroups.labels;
-        block.properties.chartBottom.data.datasets[0] = {
+        $(block.elem).data("chartBottom").data.labels = standardGroups.labels;
+        $(block.elem).data("chartBottom").data.datasets[0] = {
           data: standardGroups.values
         };
-        block.properties.chartBottom.update();
+        $(block.elem).data("chartBottom").update();
 
         events.emit("inputChanged");
       });
 
       var Chart = require("chart.js");
-      block.properties.chartTop = new Chart(
+      $(block.elem).data("chartTop", new Chart(
         $(block.elem).find(".chart.top"),
         {
           type: "bar",
@@ -137,8 +135,8 @@ module.exports =  {
             }
           }
         }
-      );
-      block.properties.chartBottom = new Chart(
+      ));
+      $(block.elem).data("chartBottom", new Chart(
         $(block.elem).find(".chart.bottom"),
         {
           type: "bar",
@@ -158,7 +156,7 @@ module.exports =  {
             }]
           }
         }
-      );
+      ));
 
       $(block.elem).find("select").change();
     }

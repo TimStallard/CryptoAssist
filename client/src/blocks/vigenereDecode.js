@@ -2,7 +2,7 @@ module.exports =  {
   name: "Vigenere Decode",
   inputs: {
     cipherText: "Ciphertext",
-    key: "key"
+    key: "Key"
   },
   output: true,
   execute: function({cipherText, key}, elem){
