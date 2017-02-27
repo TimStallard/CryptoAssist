@@ -60,7 +60,7 @@ module.exports =  {
       topGroups = topGroupsByFrequency(getFrequency(getGroups(input, parseInt(block.properties.type))));
     }
     else if(block.properties.type == "first"){
-      //first
+      //first letter of each word
       topGroups = topGroupsByFrequency(getFrequency(getFirstLetters(input, parseInt(block.properties.type))));
     }
     $(block.elem).data("chartTop").data.labels = topGroups.labels;
