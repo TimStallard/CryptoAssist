@@ -18,6 +18,7 @@ var blocks = [
   "transpositionReverse",
   "substitution",
   "frequency",
+  "custom",
 ];
 
 module.exports = blocks.reduce((blocks, block)=>{
