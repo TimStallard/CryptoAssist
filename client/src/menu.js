@@ -1,4 +1,6 @@
 var $ = require("jquery");
+var events = require("./events.js");
+var diagram = require("./diagram");
 
 $("#header>a#export").click(function(){
   var fileSaver = require("file-saver");
@@ -17,5 +19,16 @@ $("#header>#importUpload").change(function(){
     require("./diagram/import.js")(reader.result);
   }
   reader.readAsText(this.files[0]);
-  //console.log($("#header>#importUpload")[0].files[0])
-})
+});
+
+$("#header>a#projectName").click(function(){
+  do{
+    diagram.name = prompt("Please enter a name for the diagram", diagram.name);
+  }
+  while(!diagram.name);
+  $("#header>a#projectName").html(diagram.name);
+});
+
+events.subscribe("diagramImport", function(){
+  $("#header>a#projectName").html(diagram.name);
+});

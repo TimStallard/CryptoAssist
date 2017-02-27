@@ -15,8 +15,8 @@ function resolveOutput(block, cache){
   }
 
   var output = "";
-  if(Object.keys(blocks[block.type].inputs).length == Object.keys(inputValues).length){
-    var output = blocks[block.type].execute(inputValues, block);
+  if(Object.keys(blocks[block.type].inputs).length == Object.keys(inputValues).length){ //only execute if all inputs are present
+    output = blocks[block.type].execute(inputValues, block);
   }
   cache[block.id] = output;
 
