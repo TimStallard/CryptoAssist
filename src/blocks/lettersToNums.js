@@ -26,6 +26,7 @@ module.exports =  {
       }
     })
     .map((num)=>(num + offset))
+    .map((num)=>(((num%26)+26)%26))
     .join(",");
   },
   pageBlock: {
