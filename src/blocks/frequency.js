@@ -64,9 +64,7 @@ module.exports =  {
       topGroups = topGroupsByFrequency(getFrequency(getFirstLetters(input, parseInt(block.properties.type))));
     }
     $(block.elem).data("chartTop").data.labels = topGroups.labels;
-    $(block.elem).data("chartTop").data.datasets[0] = {
-      data: topGroups.values
-    };
+    $(block.elem).data("chartTop").data.datasets[0].data = topGroups.values;
     $(block.elem).data("chartTop").update();
   },
   size: { //update static widths in HTML as well
@@ -112,9 +110,7 @@ module.exports =  {
         var standardGroups = topGroupsByFrequency(standardFrequency, true);
 
         $(block.elem).data("chartBottom").data.labels = standardGroups.labels;
-        $(block.elem).data("chartBottom").data.datasets[0] = {
-          data: standardGroups.values
-        };
+        $(block.elem).data("chartBottom").data.datasets[0].data = standardGroups.values;
         $(block.elem).data("chartBottom").update();
 
         events.emit("inputChanged");
@@ -133,6 +129,13 @@ module.exports =  {
             legend: {
               display: false
             }
+          },
+          data: {
+            labels: [],
+            datasets: [{
+              data: [],
+              backgroundColor: "rgba(0,0,0,0.5)"
+            }]
           }
         }
       ));
@@ -150,9 +153,10 @@ module.exports =  {
             }
           },
           data: {
-            labels: ["1", "2", "3"],
+            labels: [],
             datasets: [{
-              data: [5,3,10]
+              data: [],
+              backgroundColor: "rgba(0,0,0,0.5)"
             }]
           }
         }
