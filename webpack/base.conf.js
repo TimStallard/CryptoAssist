@@ -1,18 +1,16 @@
 var path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
-var webpack = require("webpack");
 module.exports = {
-  context: path.join(__dirname, "src"),
+  context: path.join(__dirname, "..", "src"),
   entry: "./index.js",
   output: {
-    path: path.join(__dirname, "build"),
+    path: path.join(__dirname, "..", "build"),
     filename: "app.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./index.html"
-    }),
-    new webpack.optimize.UglifyJsPlugin()
+    })
   ],
   module: {
     rules: [
@@ -33,22 +31,9 @@ module.exports = {
             loader: "handlebars-loader"
           }
         ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-            {
-            loader: "babel-loader",
-            query: {
-              presets: ["es2015"]
-            }
-          }
-        ]
       }
     ]
-  },
-  devtool: "source-map"
+  }
 }
 
 //SASS code from https://github.com/jtangelder/sass-loader licensed under MIT, see https://github.com/jtangelder/sass-loader/blob/master/LICENSE
