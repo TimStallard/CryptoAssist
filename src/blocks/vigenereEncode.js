@@ -20,6 +20,7 @@ module.exports =  {
         return int;
       }
     })
+    .filter((a)=>(!Number.isNaN(a)))
     .map(require("./util/toChar.js"))
     .join("");
   },
