@@ -32,7 +32,15 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
       y: event.pageY - $(this).parent().offset().top
     },
     type: $(this).parent().data("type"),
-    inputs: {},
+    inputs:
+      Object.keys(blocks[$(this).parent().data("type")].inputs) //get block ids
+      .reduce((inputs, input)=>{ //turn this into an object
+        inputs[input] = {
+          joined: "",
+          value: ""
+        };
+        return inputs;
+      }, {}),
     properties: {}
   }
   diagram.state.push(newBlock);

@@ -1,7 +1,9 @@
 module.exports =  {
   name: "Output",
   inputs: {
-    input: "Input"
+    input: {
+      name: "Input"
+    }
   },
   output: false,
   execute: function({input}, block){

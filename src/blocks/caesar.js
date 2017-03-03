@@ -1,8 +1,14 @@
 module.exports =  {
   name: "Caesar",
   inputs: {
-    text: "Text",
-    shift: "Shift"
+    text: {
+      name: "Text"
+    },
+    shift: {
+      name: "Shift",
+      inline: true,
+      type: "number"
+    }
   },
   output: true,
   execute: function({text, shift}, elem){

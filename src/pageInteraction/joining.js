@@ -50,7 +50,7 @@ $("#workspace").on("mouseup", ".block>.inputs>div", function(event){
     endBlock = $(this).parent().parent().attr("id");
     endInput = $(this).attr("id");
     var endBlockInstance = diagram.state.filter((block)=>(block.id == endBlock))[0];
-    endBlockInstance.inputs[endInput] = startBlock;
+    endBlockInstance.inputs[endInput].joined = startBlock;
     drawJoiningLines();
     events.emit("newJoin");
   }
@@ -62,7 +62,7 @@ $("#workspace").on("mousedown", ".block>.inputs>div", function(event){
     var blockId = $(this).parent().parent().attr("id")
     var input = $(this).attr("id");
     var block = diagram.state.filter((block)=>(block.id == blockId))[0];
-    delete block.inputs[input];
+    block.inputs[input].joined = "";
     drawJoiningLines();
     events.emit("joinRemove");
   }
@@ -76,25 +76,27 @@ function drawJoiningLines(){
   $(".line").remove();
   for(var endBlock of diagram.state){
     for(var input in endBlock.inputs){
-      startBlockId = endBlock.inputs[input];
-      startBlock = diagram.state.filter((block)=>(block.id == startBlockId))[0];
-      lineId = startBlock.id + "-" + endBlock.id + "-" + input;
-      if($("#" + lineId).length){
-        var line = $("#" + lineId)
-      }
-      else{
-        var line = $("<div class='line' id='" + lineId + "'></div>").appendTo($("#workspace"));
-      }
+      if(endBlock.inputs[input].joined){
+        startBlockId = endBlock.inputs[input].joined;
+        startBlock = diagram.state.filter((block)=>(block.id == startBlockId))[0];
+        lineId = startBlock.id + "-" + endBlock.id + "-" + input;
+        if($("#" + lineId).length){
+          var line = $("#" + lineId)
+        }
+        else{
+          var line = $("<div class='line' id='" + lineId + "'></div>").appendTo($("#workspace"));
+        }
 
-      outputElem = $("#" + startBlock.id).find(".output").eq(0);
-      inputElem = $("#" + endBlock.id).find(".inputs>#" + input).eq(0);
-      moveLine(
-        line,
-        startBlock.position.x + (outputElem.outerWidth()/2),
-        startBlock.position.y + outputElem.position().top + outputElem.outerHeight(),
-        endBlock.position.x + inputElem.position().left + (inputElem.outerWidth()/2),
-        endBlock.position.y
-      );
+        outputElem = $("#" + startBlock.id).find(".output").eq(0);
+        inputElem = $("#" + endBlock.id).find(".inputs>#" + input).eq(0);
+        moveLine(
+          line,
+          startBlock.position.x + (outputElem.outerWidth()/2),
+          startBlock.position.y + outputElem.position().top + outputElem.outerHeight(),
+          endBlock.position.x + inputElem.position().left + (inputElem.outerWidth()/2),
+          endBlock.position.y
+        );
+      }
     }
   }
 }

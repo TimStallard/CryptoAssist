@@ -1,7 +1,12 @@
 <div class="block" data-type="{{block.type}}" id="{{instance.id}}">
   <div class="inputs">
-    {{#each block.inputs as |desc name|}}
-      <div id="{{name}}">{{desc}}</div>
+    {{#each block.inputs as |input id|}}
+      <div id="{{id}}">
+        {{input.name}}
+        {{#if input.inline}}
+          <input type="{{input.type}}" size="4" value="{{lookup (lookup ../instance.inputs id) "value"}}"></input>
+        {{/if}}
+      </div>
     {{/each}}
   </div>
   <div class="main">
