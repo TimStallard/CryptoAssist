@@ -30,6 +30,7 @@ function calculateOutputBlocks(){
 
 events.subscribe("inputChanged", calculateOutputBlocks);
 events.subscribe("newJoin", calculateOutputBlocks);
+events.subscribe("joinRemove", calculateOutputBlocks);
 events.subscribe("diagramImport", calculateOutputBlocks);
 
 window.calculate = calculateOutputBlocks;

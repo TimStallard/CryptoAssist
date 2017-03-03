@@ -56,6 +56,18 @@ $("#workspace").on("mouseup", ".block>.inputs>div", function(event){
   }
 });
 
+$("#workspace").on("mousedown", ".block>.inputs>div", function(event){
+  if(event.which == 3){ //right mouse button, delete
+    event.preventDefault();
+    var blockId = $(this).parent().parent().attr("id")
+    var input = $(this).attr("id");
+    var block = diagram.state.filter((block)=>(block.id == blockId))[0];
+    delete block.inputs[input];
+    drawJoiningLines();
+    events.emit("joinRemove");
+  }
+});
+
 events.subscribe("blockMove", drawJoiningLines);
 events.subscribe("blockDelete", drawJoiningLines);
 events.subscribe("diagramImport", drawJoiningLines);
