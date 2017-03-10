@@ -4,18 +4,19 @@ var events = require("../events.js");
 var $ = require("jquery");
 var uuid = require("node-uuid");
 
-function blockPositionChange(event){
+function blockPositionChange(event){ //fired when a block is moved or added
   var block = diagram.state.filter((block)=>(block.dragging))[0];
   if(block){
+    //change position to the event coordinates plus the offset, factoring in the relative positioning of the items on the workspace
     block.position.x = event.pageX - $("#workspace").position().left - block.offset.x;
     block.position.y = event.pageY - $("#workspace").position().top - block.offset.y;
 
-    $("#workspace>.block#" + block.id).css({
+    $("#workspace>.block#" + block.id).css({ //apply new position to element
       left: block.position.x,
       top: block.position.y,
     });
 
-    events.emit("blockMove");
+    events.emit("blockMove"); //trigger redraw of lines
   }
 }
 
@@ -33,7 +34,7 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
     },
     type: $(this).parent().data("type"),
     inputs:
-      Object.keys(blocks[$(this).parent().data("type")].inputs) //get block ids
+      Object.keys(blocks[$(this).parent().data("type")].inputs) //get input ids
       .reduce((inputs, input)=>{ //turn this into an object
         inputs[input] = {
           joined: "",
@@ -48,11 +49,11 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
   blockPositionChange(event);
 });
 
-$("#workspace").on("mousedown", ".block>.main,.block>.inputs", function(event){
+$("#workspace").on("mousedown", ".block>.main,.block>.inputs", function(event){ //drag start
   if(event.which == 1){ //check left mouse button
-    var block = diagram.state.filter((block)=>(block.id == $(this).parent().attr("id")))[0];
+    var block = diagram.state.filter((block)=>(block.id == $(this).parent().attr("id")))[0]; //find block
     block.dragging = true;
-    block.offset.x = event.pageX - $(this).parent().offset().left;
+    block.offset.x = event.pageX - $(this).parent().offset().left; //calculate offset of block from mouse
     block.offset.y = event.pageY - $(this).parent().offset().top;
     blockPositionChange(event);
   }
@@ -71,20 +72,16 @@ $(document).on("mousemove", function(event){
 $("#workspace").on("mousedown", ".block>.main", function(event){
   if(event.which == 3){ //right mouse button, delete
     event.preventDefault();
-    for(var i in diagram.state){
-      if(diagram.state[i].id == $(this).parent().attr("id")){
-        diagram.state.splice(i, 1);
-      }
-    }
-    for(var block of diagram.state){
+    diagram.state = diagram.state.filter((block)=>(block.id != $(this).parent().attr("id"))); //delete block from array
+    for(var block of diagram.state){ //break relatioships
       for(var input in block.inputs){
-        if(block.inputs[input] == $(this).parent().attr("id")){
-          delete block.inputs[input];
+        if(block.inputs[input].joined == $(this).parent().attr("id")){
+          block.inputs[input].joined = "";
         }
       }
     }
-    $(this).parent().remove();
-    events.emit("blockDelete");
+    $(this).parent().remove(); //delete element
+    events.emit("blockDelete"); //redraw lines
   }
 });
 

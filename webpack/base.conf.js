@@ -35,5 +35,3 @@ module.exports = {
     ]
   }
 }
-
-//SASS code from https://github.com/jtangelder/sass-loader licensed under MIT, see https://github.com/jtangelder/sass-loader/blob/master/LICENSE
