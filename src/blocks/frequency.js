@@ -3,15 +3,15 @@ var events = require("../events.js");
 function getGroups(text, size){
   return text
   .toLowerCase()
-  .split(/[^a-z]/)
-  .map((word)=>{
+  .split(/[^a-z]/) //split on any non a-z character to get words
+  .map((word)=>{ //turn each word into all size-length groups
     groups = []
     for(var i = 0; i <= (word.length - size); i++){
       groups.push(word.substr(i, size));
     }
     return groups;
   })
-  .reduce((allGroups, groups)=>(
+  .reduce((allGroups, groups)=>( //merge these groups
     allGroups.concat(groups)
   ), []);
 }
@@ -19,15 +19,15 @@ function getGroups(text, size){
 function getFirstLetters(text){
   return text
   .toLowerCase()
-  .split(/[^a-z]/)
-  .filter((word)=>(word.length > 0))
-  .map((word)=>(word[0]));
+  .split(/[^a-z]/) //split on any non a-z character to get words
+  .filter((word)=>(word.length > 0)) //filter out zero length words
+  .map((word)=>(word[0])); //return first char
 }
 
 function getFrequency(groups){
   return groups
   .reduce((frequencies, group)=>{
-    if(!frequencies[group]){
+    if(!frequencies[group]){ //add to object if not already present
       frequencies[group] = 0;
     }
     frequencies[group] += 1;
@@ -37,11 +37,11 @@ function getFrequency(groups){
 
 function topGroupsByFrequency(groups, alreadyPercentage){
   var output = {};
-  var total = Object.values(groups).reduce((a, b)=>(a + b));
-  output.labels = Object.keys(groups).sort((a, b)=>(groups[b] - groups[a])).slice(0, 26);
+  output.labels = Object.keys(groups).sort((a, b)=>(groups[b] - groups[a])).slice(0, 26); //get top 26 titles by key
   output.values = output.labels.map((groupName)=>(groups[groupName]));
   if(!alreadyPercentage){
-    output.values = output.values.map((value)=>(value / total * 100)); //calculates as percentage of whole thing
+    var total = Object.values(groups).reduce((a, b)=>(a + b));
+    output.values = output.values.map((value)=>(value / total * 100)); //calculates as percentage of all items
   }
   return output;
 }
@@ -67,7 +67,7 @@ module.exports =  {
     $(block.elem).data("chartTop").data.datasets[0].data = topGroups.values;
     $(block.elem).data("chartTop").update();
   },
-  size: { //update static widths in HTML as well
+  size: { //if you change this, update static widths in HTML as well
     height: 400,
     width: 400
   },
