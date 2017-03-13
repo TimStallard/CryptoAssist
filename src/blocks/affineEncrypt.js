@@ -1,9 +1,24 @@
 module.exports =  {
   name: "Affine Encrypt",
   inputs: {
-    text: "Text",
-    a: "a",
-    b: "b"
+    text: {
+      name: "Text",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    a: {
+      name: "a",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    b: {
+      name: "b",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({text, a, b}, elem){

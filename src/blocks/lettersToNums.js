@@ -1,8 +1,18 @@
 module.exports =  {
   name: "Letters to Numbers",
   inputs: {
-    letters: "Letters",
-    offset: "Offset"
+    letters: {
+      name: "Letters",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    offset: {
+      name: "Offset",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({letters, offset}, elem){

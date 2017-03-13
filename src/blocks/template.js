@@ -1,7 +1,12 @@
 module.exports =  {
   name: "Example Block",
   inputs: {
-    input: "Input"
+    input: {
+      name: "Input",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({input}, elem){

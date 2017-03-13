@@ -1,7 +1,12 @@
 module.exports =  {
   name: "Hex to ASCII",
   inputs: {
-    hex: "Hex String"
+    hex: {
+      name: "Hex String",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({hex}, elem){

@@ -1,7 +1,12 @@
 module.exports =  {
   name: "Atbash",
   inputs: {
-    text: "Text"
+    text: {
+      name: "Text",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({text}, elem){

@@ -1,8 +1,18 @@
 module.exports =  {
   name: "Vigenere Encode",
   inputs: {
-    plaintext: "Plaintext",
-    key: "Key"
+    plaintext: {
+      name: "Plaintext",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    key: {
+      name: "Key",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({plaintext, key}, elem){

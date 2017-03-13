@@ -50,7 +50,12 @@ function topGroupsByFrequency(groups, alreadyPercentage){
 module.exports =  {
   name: "Frequency Analysis",
   inputs: {
-    input: "Input"
+    input: {
+      name: "Input",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: false,
   execute: function({input}, block){

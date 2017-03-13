@@ -3,11 +3,36 @@ var events = require("../events.js");
 module.exports =  {
   name: "Custom Code",
   inputs: {
-    inp1: "1",
-    inp2: "2",
-    inp3: "3",
-    inp4: "4",
-    inp5: "5"
+    inp1: {
+      name: "1",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    inp2: {
+      name: "2",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    inp3: {
+      name: "3",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    inp4: {
+      name: "4",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    inp5: {
+      name: "5",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function(inputs, block){

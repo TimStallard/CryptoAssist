@@ -2,12 +2,16 @@ module.exports =  {
   name: "Caesar",
   inputs: {
     text: {
-      name: "Text"
+      name: "Text",
+      type: "text",
+      required: true,
+      inline: false
     },
     shift: {
       name: "Shift",
-      inline: true,
-      type: "number"
+      type: "number",
+      required: true,
+      inline: true
     }
   },
   output: true,

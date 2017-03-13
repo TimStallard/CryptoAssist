@@ -1,8 +1,18 @@
 module.exports =  {
   name: "Transposition Reverse",
   inputs: {
-    text: "Text",
-    n: "n"
+    text: {
+      name: "Text",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    n: {
+      name: "n",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({text, n}, elem){

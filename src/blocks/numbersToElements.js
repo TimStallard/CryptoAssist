@@ -1,7 +1,12 @@
 module.exports =  {
   name: "Numbers to Elements",
   inputs: {
-    numbers: "Numbers"
+    numbers: {
+      name: "Numbers",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({numbers}, elem){

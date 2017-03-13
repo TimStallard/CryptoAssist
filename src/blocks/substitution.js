@@ -1,8 +1,18 @@
 module.exports =  {
   name: "Substitution",
   inputs: {
-    text: "Text",
-    mapping: "Mapping"
+    text: {
+      name: "Text",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    mapping: {
+      name: "Mapping",
+      type: "text",
+      required: true,
+      inline: false
+    }
   },
   output: true,
   execute: function({text, mapping}, elem){

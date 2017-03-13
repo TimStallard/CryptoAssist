@@ -1,8 +1,18 @@
 module.exports =  {
   name: "Transposition",
   inputs: {
-    text: "Text",
-    n: "n"
+    text: {
+      name: "Text",
+      type: "text",
+      required: true,
+      inline: false
+    },
+    n: {
+      name: "n",
+      type: "number",
+      required: true,
+      inline: true
+    }
   },
   output: true,
   execute: function({text, n}, elem){
