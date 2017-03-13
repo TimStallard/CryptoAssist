@@ -4,7 +4,7 @@ var events = require("../events.js");
 var $ = require("jquery");
 
 function moveLine(elem, a, b, c, d){
-  [[a, b], [c, d]] = [[a, b], [c, d]].sort((a, b)=>(a[0] - b[0])); //swap coords based on x-value, a will always be smaller than b
+  [[a, b], [c, d]] = [[a, b], [c, d]].sort((a, b)=>(a[0] - b[0])); //swap coords based on x-value, a will now be smaller than c
   var l = Math.sqrt(Math.pow(a  - c, 2) + Math.pow(d - b, 2)); //get length of line
   //calculate coords
   var x = (a + c - l) / 2;
