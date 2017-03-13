@@ -9,15 +9,15 @@ module.exports =  {
     },
     a: {
       name: "a",
-      type: "text",
+      type: "number",
       required: true,
-      inline: false
+      inline: true
     },
     b: {
       name: "b",
-      type: "text",
+      type: "number",
       required: true,
-      inline: false
+      inline: true
     }
   },
   output: true,
@@ -33,7 +33,7 @@ module.exports =  {
     }
 
     if(!require("./util/coPrime.js")(a, 26)){
-      console.log(a, 26, "not coprime");
+      throw "a and 26 must be coprime";
       return "";
     }
 
