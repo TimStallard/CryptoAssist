@@ -39,7 +39,7 @@ function resolveOutput(block, cache){
   }
 }
 
-function calculateOutputBlocks(){
+function calculateOutputBlocks(){ //resolve the output for frequency and output blocks, their execute functions will handle displaying
   var cache = {};
   var outputBlocks = diagram.state.filter((block)=>((block.type == "output") || (block.type == "frequency")));
   for(var block of outputBlocks){
