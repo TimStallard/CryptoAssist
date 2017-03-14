@@ -25,7 +25,7 @@ module.exports =  {
     .filter((pair)=>(pair.length == 2))
     .map((pair)=>(parseInt(pair, 16)))
     .map((int)=>(String.fromCharCode(int)))
-    .join("")
+    .join("");
   },
   pageBlock: {
     html: "",

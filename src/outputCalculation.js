@@ -5,7 +5,7 @@ var blocks = require("./blocks");
 function resolveOutput(block, cache){
   try{
     var inputValues = {};
-    var error = "";
+    $(block.elem).find(".error").html("");
     for(var input in block.inputs){
       if(block.inputs[input].joined){ //if it's joined to something else
         if(block.inputs[input].joined in cache){ //if output of other block is already in cache
@@ -19,8 +19,13 @@ function resolveOutput(block, cache){
       else if(block.inputs[input].value){ //if value is already set, just save that
         inputValues[input] = block.inputs[input].value;
       }
-      if(blocks[block.type].inputs[input].required && !(inputValues[input])){ //if input is required and is missing
-        throw "A required input is missing";
+      if(!inputValues[input]){ //if currently missing/blank
+        if(blocks[block.type].inputs[input].default){ //if a default is present, use that
+          inputValues[input] = blocks[block.type].inputs[input].default;
+        }
+        else if(blocks[block.type].inputs[input].required){ //otherwise, throw an error
+          throw "A required input is missing";
+        }
       }
     }
 
@@ -28,8 +33,8 @@ function resolveOutput(block, cache){
     cache[block.id] = output;
     return output;
   }
-  catch(err){
-    console.log("ERROR", err);
+  catch(err){ //if there is an error, display it
+    $(block.elem).find(".error").html(err);
     return "";
   }
 }

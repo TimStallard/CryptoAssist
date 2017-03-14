@@ -10,34 +10,20 @@ module.exports =  {
     offset: {
       name: "Offset",
       type: "text",
-      required: true,
-      inline: false
+      required: false,
+      inline: false,
+      default: "0"
     }
   },
   output: true,
   execute: function({nums, offset}, elem){
-    if(!offset){
-      offset = 0;
-    }
-    else{
-      offset = parseInt(offset);
-    }
-
     return nums
     .split(",")
     .filter((num)=>(num))
     .map((num)=>(parseInt(num)))
     .filter((num)=>(!isNaN(num)))
-    .map((num)=>(num - offset))
-    .map((num)=>(num%52))
-    .map((num)=>{
-      if(num < 0){
-        return 52 + num;
-      }
-      else{
-        return num;
-      }
-    })
+    .map((num)=>(num - parseInt(offset)))
+    .map((num)=>((num%52)+52)%52)
     .map((num)=>{
       if(num < 26){
         asciiOffset = 97;

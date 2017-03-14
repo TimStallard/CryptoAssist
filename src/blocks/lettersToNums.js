@@ -10,19 +10,13 @@ module.exports =  {
     offset: {
       name: "Offset",
       type: "text",
-      required: true,
-      inline: false
+      required: false,
+      inline: false,
+      default: "0"
     }
   },
   output: true,
   execute: function({letters, offset}, elem){
-    if(!offset){
-      offset = 0;
-    }
-    else{
-      offset = parseInt(offset);
-    }
-
     return letters
     .split("")
     .map((char)=>(char.charCodeAt(0)))
@@ -35,7 +29,7 @@ module.exports =  {
         return asciiVal - 97;
       }
     })
-    .map((num)=>(num + offset))
+    .map((num)=>(num + parseInt(offset)))
     .map((num)=>(((num%26)+26)%26))
     .join(",");
   },

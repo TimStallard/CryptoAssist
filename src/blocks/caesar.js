@@ -11,7 +11,8 @@ module.exports =  {
       name: "Shift",
       type: "number",
       required: true,
-      inline: true
+      inline: true,
+      default: "0"
     }
   },
   output: true,
