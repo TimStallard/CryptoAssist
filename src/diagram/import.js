@@ -3,10 +3,23 @@ var events = require("../events.js");
 var $ = require("jquery");
 
 module.exports = function(newDiagram){
-  Object.assign(diagram, JSON.parse(newDiagram));
-  $("#workspace>*").remove();
-  for(var block of diagram.state){
-    require("../pageInteraction/addBlockToPage.js")(block);
+  var newDiagramObject = JSON.parse(newDiagram);
+  var customCode = false;
+  if(newDiagramObject.state.filter((block)=>(block.type == "custom")).length){customCode = true}; //check blocks for custom
+  for(var snapshot of newDiagramObject.snapshots){
+    if(snapshot.state.filter((block)=>(block.type == "custom")).length){customCode = true}; //check blocks in snapshots for custom
   }
-  events.emit("diagramImport");
+  var accepted = true;
+  if(customCode){ //check with user if JS present
+    accepted = confirm("This document contains Javascript. You should only allow this document to be opened if you trust the source.");
+  }
+  if(accepted){
+    if(newDiagramObject.state.filter((block)=>(block.type == "custom")).length) customCode = true;
+    Object.assign(diagram, newDiagramObject);
+    $("#workspace>*").remove();
+    for(var block of diagram.state){
+      require("../pageInteraction/addBlockToPage.js")(block);
+    }
+    events.emit("diagramImport");
+  }
 }
