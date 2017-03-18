@@ -20,7 +20,7 @@ function blockPositionChange(event){ //fired when a block is moved or added
   }
 }
 
-$("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
+$("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){ //add new block
   var newBlock = {
     id: uuid.v4(),
     position: {
@@ -38,7 +38,7 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){
       .reduce((inputs, input)=>{ //turn this into an object
         inputs[input] = {
           joined: "",
-          value: ""
+          value: blocks[$(this).parent().data("type")].inputs[input].default || "" //use default value if present
         };
         return inputs;
       }, {}),

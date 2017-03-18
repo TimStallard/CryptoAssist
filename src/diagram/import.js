@@ -14,7 +14,6 @@ module.exports = function(newDiagram){
     accepted = confirm("This document contains Javascript. You should only allow this document to be opened if you trust the source.");
   }
   if(accepted){
-    if(newDiagramObject.state.filter((block)=>(block.type == "custom")).length) customCode = true;
     Object.assign(diagram, newDiagramObject);
     $("#workspace>*").remove();
     for(var block of diagram.state){
