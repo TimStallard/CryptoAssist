@@ -3,12 +3,18 @@
     <title>Cryptography Assistant</title>
   </head>
   <body>
-    <div id="header">
-      <a href="#" id="projectName">New Diagram</a>
-      <a href="#" id="import">Open File</a>
-      <a href="#" id="export">Save</a>
-      <input type="file" id="importUpload"></input>
-    </div>
+    <ul id="header">
+      <li><a href="#" id="projectName">New Diagram</a></li>
+      <li><a href="#" id="import">Open File</a></li>
+      <li><a href="#" id="export">Save</a></li>
+      <li>
+        <a href="#" id="snapshotsLink">Snapshots</a>
+        <ul id="snapshots">
+          <li><a href="#" id="addSnapshot">Add Snapshot</a></li>
+        </ul>
+      </li>
+    </ul>
+    <input type="file" id="importUpload"></input>
     <div id="blocks">
     </div>
     <div id="workspace">

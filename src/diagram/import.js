@@ -14,11 +14,7 @@ module.exports = function(newDiagram){
     accepted = confirm("This document contains Javascript. You should only allow this document to be opened if you trust the source.");
   }
   if(accepted){
-    Object.assign(diagram, newDiagramObject);
-    $("#workspace>*").remove();
-    for(var block of diagram.state){
-      require("../pageInteraction/addBlockToPage.js")(block);
-    }
-    events.emit("diagramImport");
+    Object.assign(diagram, JSON.parse(newDiagram));
+    require("./updateState.js")();
   }
 }
