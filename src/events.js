@@ -1,11 +1,16 @@
 var subscriptions = {};
 
 module.exports = {
-  subscribe: function(event, callback){
-    if(!subscriptions[event]){
-      subscriptions[event] = [];
+  subscribe: function(events, callback){
+    if(!Array.isArray(events)){ //if not an array, make it a single item array
+      events = [events];
     }
-    subscriptions[event].push(callback);
+    for(var event of events){
+      if(!subscriptions[event]){
+        subscriptions[event] = [];
+      }
+      subscriptions[event].push(callback);
+    }
   },
   emit: function(event, data){
     if(subscriptions[event]){
