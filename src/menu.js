@@ -21,17 +21,17 @@ $("#importUpload").change(function(){ //when a file is selected
   reader.readAsText(this.files[0]); //read the file as text, this will call the above function when complete
 });
 
-$("#header>a#projectName").click(function(){
+$("#header a#projectName").click(function(){
   do{
     diagram.name = prompt("Please enter a name for the diagram", diagram.name);
   }
   while(!diagram.name); //keep asking for a new name until a valid one is entered
-  $("#header>a#projectName").html(diagram.name);
+  $("#header a#projectName").html(diagram.name);
 });
 
 events.subscribe("diagramImport", function(){
   //update displayed name when new diagram imported
-  $("#header>a#projectName").html(diagram.name);
+  $("#header a#projectName").html(diagram.name);
 });
 
 $("#header a#addSnapshot").click(function(){
@@ -41,7 +41,7 @@ $("#header a#addSnapshot").click(function(){
 
 events.subscribe(["snapshotsChanged", "diagramImport"], function(){
   $("#snapshots>.snapshot").remove();
-  diagram.snapshots.sort((a, b)=>(b.date - a.date));
+  diagram.snapshots.sort((a, b)=>(b.date - a.date)); //sort with newest first
   for(var i in diagram.snapshots){
     var date = new Date(diagram.snapshots[i].date);
     $("#snapshots").append(
