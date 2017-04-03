@@ -1,5 +1,6 @@
 var blocks = require("../blocks");
 var events = require("../events");
+var $ = require("jquery");
 
 module.exports = function(newBlock){
   var newBlockElement = $(

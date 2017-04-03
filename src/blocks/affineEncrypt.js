@@ -33,8 +33,8 @@ module.exports =  {
     }
 
     if(!require("./util/coPrime.js")(a, 26)){
+      throw "a and 26 must be coprime";
       return "";
-      console.log(a, 26, "not coprime");
     }
 
     var lookupTable = [];

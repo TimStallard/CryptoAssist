@@ -2,7 +2,8 @@ module.exports =  {
   name: "Output",
   inputs: {
     input: {
-      name: "Input"
+      name: "Input",
+      type: "text"
     }
   },
   output: false,

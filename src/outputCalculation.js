@@ -1,6 +1,7 @@
 var diagram = require("./diagram");
 var events = require("./events.js");
-var blocks = require("./blocks");
+var blockModels = require("./blocks");
+var typeConversion = require("./typeConversion.js");
 
 function resolveOutput(block, cache){
   try{
@@ -19,17 +20,21 @@ function resolveOutput(block, cache){
       else if(block.inputs[input].value){ //if value is already set, just save that
         inputValues[input] = block.inputs[input].value;
       }
-      if(!inputValues[input]){ //if currently missing/blank
-        if(blocks[block.type].inputs[input].default){ //if a default is present, use that
-          inputValues[input] = blocks[block.type].inputs[input].default;
-        }
-        else if(blocks[block.type].inputs[input].required){ //otherwise, throw an error
+
+      if(inputValues[input]){ //if input is present, check and convert into type
+        inputValues[input] = typeConversion[blockModels[block.type].inputs[input].type](inputValues[input]);
+      }
+      else{ //currently missing/blank
+        if(blockModels[block.type].inputs[input].required){ //if required, throw an error
           throw "A required input is missing";
+        }
+        else if(blockModels[block.type].inputs[input].default){ //otherwise, if a default is present, use that
+          inputValues[input] = blockModels[block.type].inputs[input].default;
         }
       }
     }
 
-    var output = blocks[block.type].execute(inputValues, block);
+    var output = blockModels[block.type].execute(inputValues, block);
     cache[block.id] = output;
     return output;
   }
