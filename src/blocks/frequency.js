@@ -133,6 +133,13 @@ module.exports =  {
             },
             legend: {
               display: false
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
             }
           },
           data: {
@@ -155,6 +162,13 @@ module.exports =  {
             },
             legend: {
               display: false
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
             }
           },
           data: {
