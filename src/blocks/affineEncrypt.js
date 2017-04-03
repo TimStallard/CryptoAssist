@@ -11,13 +11,13 @@ module.exports =  {
       name: "a",
       type: "text",
       required: true,
-      inline: false
+      inline: true
     },
     b: {
       name: "b",
       type: "text",
       required: true,
-      inline: false
+      inline: true
     }
   },
   output: true,

@@ -11,7 +11,7 @@ module.exports =  {
       name: "n",
       type: "text",
       required: true,
-      inline: false
+      inline: true
     }
   },
   output: true,

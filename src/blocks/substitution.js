@@ -11,7 +11,7 @@ module.exports =  {
       name: "Mapping",
       type: "text",
       required: true,
-      inline: false
+      inline: true
     }
   },
   output: true,
@@ -40,7 +40,7 @@ module.exports =  {
     .join("");
   },
   pageBlock: {
-    html: "",
+    html: "<center>Enter your Substitution as pairs of characters (eg \"abcd\" = a->b, c->d )</center>",
     js: function(){}
   }
 }

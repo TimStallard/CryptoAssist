@@ -11,7 +11,7 @@ module.exports =  {
       name: "Key",
       type: "text",
       required: true,
-      inline: false
+      inline: true
     }
   },
   output: true,

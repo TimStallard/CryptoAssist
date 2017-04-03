@@ -11,7 +11,7 @@ module.exports =  {
       name: "Offset",
       type: "text",
       required: false,
-      inline: false,
+      inline: true,
       default: "0"
     }
   },
