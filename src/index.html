@@ -7,17 +7,47 @@
       <li><a href="#" id="projectName">New Diagram</a></li>
       <li><a href="#" id="import">Open File</a></li>
       <li><a href="#" id="export">Save</a></li>
-      <li>
+      <li id="snapshots-parent">
         <a href="#" id="snapshotsLink">Snapshots</a>
         <ul id="snapshots">
           <li><a href="#" id="addSnapshot">Add Snapshot</a></li>
         </ul>
       </li>
+      <li><a href="#" id="help-button">Help</a></li>
     </ul>
     <input type="file" id="importUpload"></input>
     <div id="blocks">
     </div>
     <div id="workspace">
+    </div>
+    <div id="help">
+      <div>
+        Welcome to CryptoAssist! This is an online tool for manipulating data using various common ciphers.
+        <p>
+        You can operate the system by dragging blocks down from the top scrolling bar to place them on the diagram. You should probably start with an input and output block, and then add extra cipher blocks between them.
+        <p>
+        To join multiple blocks together, just drag from the bottom output section, and draw a line to the top of another block.
+        <p>
+        If you're interested, you can view the code on <a href="https://github.com/TimStallard/CryptoAssist">GitHub</a>. The entire project is written in Javascript, and uses the webpack build system to combine many CommonJS modules. The following libraries, all licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>, are used in this project:
+        <ul>
+          <li><a href="https://www.npmjs.com/package/babel-core">babel-core</a></li>
+          <li><a href="https://www.npmjs.com/package/babel-loader">babel-loader</a></li>
+          <li><a href="https://www.npmjs.com/package/babel-preset-es2015">babel-preset-es2015</a></li>
+          <li><a href="https://www.npmjs.com/package/chart.js">chart.js</a></li>
+          <li><a href="https://www.npmjs.com/package/css-loader">css-loader</a></li>
+          <li><a href="https://www.npmjs.com/package/file-saver">file-saver</a></li>
+          <li><a href="https://www.npmjs.com/package/handlebars">handlebars</a></li>
+          <li><a href="https://www.npmjs.com/package/handlebars-loader">handlebars-loader</a></li>
+          <li><a href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</a></li>
+          <li><a href="https://www.npmjs.com/package/jquery">jquery</a></li>
+          <li><a href="https://www.npmjs.com/package/node-sass">node-sass</a></li>
+          <li><a href="https://www.npmjs.com/package/node-uuid">node-uuid</a></li>
+          <li><a href="https://www.npmjs.com/package/sass-loader">sass-loader</a></li>
+          <li><a href="https://www.npmjs.com/package/style-loader">style-loader</a></li>
+          <li><a href="https://www.npmjs.com/package/webpack">webpack</a></li>
+          <li><a href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</a></li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>

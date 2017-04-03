@@ -51,11 +51,19 @@ events.subscribe(["snapshotsChanged", "diagramImport"], function(){
 });
 
 $("#header #snapshots").on("click", ".snapshot>a", function(){
-  var snapshot = diagram.snapshots[parseInt($(this).data("i"))]
+  var snapshot = diagram.snapshots[parseInt($(this).data("i"))] //get the snapshot with the ID from this element
   var newSnapshotName = prompt("Reverting to this snapshot will cause you to lose your current work. If you would like to make a snapshot of your current workspace, please enter a name for it:");
-  if(newSnapshotName){
+  if(newSnapshotName){ //if user wants another snapshot, make one
     require("./diagram/addSnapshot.js")(newSnapshotName);
   }
-  diagram.state = JSON.parse(JSON.stringify(snapshot.state));
+  diagram.state = JSON.parse(JSON.stringify(snapshot.state)); //load in snapshot
   require("./diagram/updateState.js")();
+});
+
+$("#header #help-button").click(function(){
+  $("#help").fadeIn().css("display", "flex");
+});
+
+$("#help").click(function(){
+  $("#help").fadeOut();
 });
