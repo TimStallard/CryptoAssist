@@ -18,7 +18,7 @@ module.exports =  {
   execute: function({text, mapping}, elem){
     mapping = mapping.toLowerCase();
     var letterMapping = {};
-    for(var i = 0; i < (mapping.length - 1); i++){
+    for(var i = 0; i < (mapping.length - 1); i = i + 2){
       letterMapping[mapping[i]] = mapping[i+1];
     }
 
@@ -26,15 +26,10 @@ module.exports =  {
     .split("")
     .map((char)=>{
       if(char.toLowerCase() in letterMapping){
-        if(char.toLowerCase() == char){
-          return letterMapping[char];
-        }
-        else{
-          return letterMapping[char.toLowerCase()].toUpperCase();
-        }
+        return letterMapping[char.toLowerCase()]
       }
       else{
-        return char;
+        return char.toLowerCase();
       }
     })
     .join("");

@@ -45,7 +45,7 @@ module.exports =  {
     return text
     .split("")
     .map(require("./util/toNum.js"))
-    .map((num)=>(reverseLookupTable[num]))
+    .map((num)=>(Number.isInteger(num) ? reverseLookupTable[num] : num))
     .map(require("./util/toChar.js"))
     .join("");
   },
