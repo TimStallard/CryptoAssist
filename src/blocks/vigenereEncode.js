@@ -17,19 +17,19 @@ module.exports =  {
   output: true,
   execute: function({plaintext, key}, elem){
     var keyNums = key.split("").map(require("./util/toNum.js"));
-    var i = 0;
+    
     return plaintext
     .split("")
     .map(require("./util/toNum.js"))
-    .map((int, pos, ints)=>{
+    .map(function(int, pos, ints){
       if(Number.isInteger(int)){
-        i++;
-        return (int + keyNums[i % key.length]) % 26;
+        this.i++;
+        return val =  (int + keyNums[this.i % key.length]) % 26;
       }
       else{
         return int;
       }
-    })
+    }, {i: -1})
     .map(require("./util/toChar.js"))
     .join("");
   },
