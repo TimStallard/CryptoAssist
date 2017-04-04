@@ -10,10 +10,10 @@ module.exports =  {
   },
   output: false,
   execute: function({input}, block){
-    $(block.elem).find("span.output").html(input);
+    $(block.elem).find("textarea.output").html(input);
   },
   pageBlock: {
-    html: "<span class='output'></span>",
+    html: "<textarea class='output' style='width: 190px; height: 135px;'></textarea>",
     js: function(){}
   }
 }

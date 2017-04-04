@@ -1,5 +1,5 @@
 function getFactors(num){
-  factors = [];
+  var factors = [];
   for(var i = 2; i <= num; i++){
     if(num%i == 0){
       factors.push(i);
@@ -11,7 +11,7 @@ function getFactors(num){
 function coPrime(a, b){
   aFactors = getFactors(a);
   bFactors = getFactors(b);
-  common = aFactors.filter((factor)=>(bFactors.indexOf(factor) > -1));
+  var common = aFactors.filter((factor)=>(bFactors.indexOf(factor) > -1));
 
   return (common.length == 0);
 }
