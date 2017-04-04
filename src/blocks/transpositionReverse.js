@@ -9,19 +9,19 @@ module.exports =  {
     },
     n: {
       name: "n",
-      type: "text",
+      type: "number",
       required: true,
-      inline: true
+      inline: true,
+      default: 1
     }
   },
   output: true,
   execute: function({text, n}, elem){
     var n = parseInt(n);
 
-    text = text.replace(/[ ,.]/g, "");
+    text = text.toLowerCase().replace(/[^a-z]/g, "");
 
     var output = [];
-    x = 0;
     var z = 0;
     for(var i = 0; i < n; i++){
       for(var y = i; y < text.length; y += n){
