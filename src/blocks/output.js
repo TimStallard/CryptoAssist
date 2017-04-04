@@ -1,3 +1,5 @@
+var $ = require("jquery");
+
 module.exports =  {
   name: "Output",
   inputs: {

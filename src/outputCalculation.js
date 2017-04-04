@@ -2,6 +2,7 @@ var diagram = require("./diagram");
 var events = require("./events.js");
 var blockModels = require("./blocks");
 var typeConversion = require("./typeConversion.js");
+var $ = require("jquery");
 
 function resolveOutput(block, cache){
   try{

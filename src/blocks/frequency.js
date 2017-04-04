@@ -1,4 +1,5 @@
 var events = require("../events.js");
+var $ = require("jquery");
 
 function getGroups(text, size){
   return text
