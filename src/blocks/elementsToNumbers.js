@@ -12,7 +12,8 @@ module.exports =  {
   execute: function({elements}, elem){
     return elements
     .split(",")
-    .map((element)=>(require("./util/elements.js").indexOf(element.toLowerCase()) + 1))
+    .map((element)=>(element.toLowerCase().replace(/[^a-z]/g, "")))
+    .map((element)=>(require("./util/elements.js").indexOf(element) + 1))
     .filter((num)=>(num > 0))
     .join(",");
   },

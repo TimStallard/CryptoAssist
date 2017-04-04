@@ -12,6 +12,7 @@ module.exports =  {
   execute: function({numbers}, elem){
     return numbers
     .split(",")
+    .map((num)=>(num.replace(/[^0-9]/g, "")))
     .map((num)=>(parseInt(num)))
     .filter((num)=>(!isNaN(num)))
     .map((num)=>(require("./util/elements.js")[num-1]))
