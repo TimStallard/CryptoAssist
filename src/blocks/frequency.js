@@ -6,7 +6,7 @@ function getGroups(text, size){
   .toLowerCase()
   .split(/[^a-z]/) //split on any non a-z character to get words
   .map((word)=>{ //turn each word into all size-length groups
-    groups = []
+    var groups = []
     for(var i = 0; i <= (word.length - size); i++){
       groups.push(word.substr(i, size));
     }
