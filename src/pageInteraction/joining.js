@@ -85,13 +85,13 @@ function drawJoiningLines(){
   for(var endBlock of diagram.state){
     for(var input in endBlock.inputs){
       if(endBlock.inputs[input].joined){ //loop through every joined input of every block
-        startBlockId = endBlock.inputs[input].joined;
-        startBlock = diagram.state.filter((block)=>(block.id == startBlockId))[0];
-        lineId = startBlock.id + "-" + endBlock.id + "-" + input;
+        var startBlockId = endBlock.inputs[input].joined;
+        var startBlock = diagram.state.filter((block)=>(block.id == startBlockId))[0];
+        var lineId = startBlock.id + "-" + endBlock.id + "-" + input;
 
         var line = $("<div class='line' id='" + lineId + "'></div>").appendTo($("#workspace"));
-        outputElem = $("#" + startBlock.id).find(".output").eq(0);
-        inputElem = $("#" + endBlock.id).find(".inputs>#" + input).eq(0);
+        var outputElem = $("#" + startBlock.id).find(".output").eq(0);
+        var inputElem = $("#" + endBlock.id).find(".inputs>#" + input).eq(0);
         moveLine(
           line,
           startBlock.position.x + (outputElem.outerWidth()/2),
