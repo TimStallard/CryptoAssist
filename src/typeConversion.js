@@ -7,7 +7,7 @@ module.exports = {
   },
   number: function(input){
     if(isNaN(parseInt(input))){
-      throw "Invalid input type - should be a string.";
+      throw "Invalid input type - should be a number.";
     }
     return parseInt(input);
   }

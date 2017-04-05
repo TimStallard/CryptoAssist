@@ -21,7 +21,7 @@ module.exports =  {
     return cipherText
     .split("")
     .map(require("./util/toNum.js"))
-    .map((int, pos, ints)=>{
+    .map(function(int, pos, ints){
       if(Number.isInteger(int)){
         this.i++;
         return (int + 26 - keyNums[this.i%key.length])%26;

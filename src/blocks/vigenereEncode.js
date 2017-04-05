@@ -17,14 +17,14 @@ module.exports =  {
   output: true,
   execute: function({plaintext, key}, elem){
     var keyNums = key.split("").map(require("./util/toNum.js"));
-    
+
     return plaintext
     .split("")
     .map(require("./util/toNum.js"))
     .map(function(int, pos, ints){
       if(Number.isInteger(int)){
         this.i++;
-        return val =  (int + keyNums[this.i % key.length]) % 26;
+        return (int + keyNums[this.i % key.length]) % 26;
       }
       else{
         return int;

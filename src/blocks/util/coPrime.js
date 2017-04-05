@@ -9,8 +9,8 @@ function getFactors(num){
 }
 
 function coPrime(a, b){
-  aFactors = getFactors(a);
-  bFactors = getFactors(b);
+  var aFactors = getFactors(a);
+  var bFactors = getFactors(b);
   var common = aFactors.filter((factor)=>(bFactors.indexOf(factor) > -1));
 
   return (common.length == 0);
