@@ -26,10 +26,10 @@ module.exports =  {
     .map((num)=>((num%52)+52)%52)
     .map((num)=>{
       if(num < 26){
-        asciiOffset = 97;
+        var asciiOffset = 97;
       }
       else{
-        asciiOffset = 65 - 26;
+        var asciiOffset = 65 - 26;
       }
       return num + asciiOffset;
     })
