@@ -22,10 +22,10 @@ $("#importUpload").change(function(){ //when a file is selected
 });
 
 $("#header a#projectName").click(function(){
-  do{
-    diagram.name = prompt("Please enter a name for the diagram", diagram.name);
+  var newName = prompt("Please enter a name for the diagram", diagram.name);
+  if(newName){
+    diagram.name = newName;
   }
-  while(!diagram.name); //keep asking for a new name until a valid one is entered
   $("#header a#projectName").html(diagram.name);
 });
 
