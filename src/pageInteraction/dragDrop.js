@@ -31,6 +31,7 @@ function blockPositionChange(event){ //fired when a block is moved or added
 }
 
 $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){ //add new block
+  event.preventDefault();
   var newBlock = {
     id: uuid.v4(),
     position: {
@@ -60,6 +61,7 @@ $("#blocks").on("mousedown", ".block>.main,.block>.inputs", function(event){ //a
 });
 
 $("#workspace").on("mousedown", ".block>.main,.block>.inputs", function(event){ //drag start
+  event.preventDefault();
   if(event.which == 1){ //check left mouse button
     var block = diagram.state.filter((block)=>(block.id == $(this).parent().attr("id")))[0]; //find block
     block.dragging = true;

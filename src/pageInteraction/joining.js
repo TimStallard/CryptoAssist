@@ -28,6 +28,7 @@ var endBlock = "";
 var endInput = "";
 
 $("#workspace").on("mousedown", ".block>.output", function(event){ //drag start
+  event.preventDefault();
   dragging = true;
   $("#workspace").append("<div class='line' id='joiningLine'></div>");
   startBlock = $(this).parent().attr("id");
