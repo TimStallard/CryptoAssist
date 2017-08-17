@@ -1,3 +1,10 @@
+This is a webapp that allows data to be passed through various common simple ciphers. It was designed for use by students in cryptography competitions, and was my A Level Computer Science project.
+
+# Demo
+There is a public demo of the system available at https://cryptoassist.timstallard.me.uk
+
+# Building it yourself
+
 To build this project, you'll need to have Node.JS and NPM installed.
 
 You can then download the project using Git, and install the dependencies:
