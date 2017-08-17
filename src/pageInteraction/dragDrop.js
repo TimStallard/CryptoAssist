@@ -71,6 +71,10 @@ $("#workspace").on("mousedown", ".block>.main,.block>.inputs", function(event){ 
   }
 });
 
+$("#workspace").on("mousedown", ".block>.main input,.block>.main textarea", function(event){ //allow for clicking a textbox
+  event.stopPropagation();
+});
+
 $("#workspace").on("mouseup", ".block>.main,.block>.inputs", function(event){
   diagram.state.filter((block)=>(block.id == $(this).parent().attr("id")))[0].dragging = false;
   offX = false;
