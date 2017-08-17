@@ -19,7 +19,7 @@ module.exports =  {
     .join(",");
   },
   pageBlock: {
-    html: "",
+    html: "<center>The numbers should be comma separated (eg 1,2,3)</center>",
     js: function(){}
   }
 }

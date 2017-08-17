@@ -82,8 +82,8 @@ body{
   .line{
     border-top: 2px solid black;
     position: absolute;
-    z-index: 1;
     pointer-events: none;
+    z-index: 1;
   }
 }
 
@@ -149,6 +149,7 @@ body{
 }
 
 #help{
+  z-index: 2;
   position: fixed;
   top: 0;
   left: 0;

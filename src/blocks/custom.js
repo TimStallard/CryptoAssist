@@ -37,6 +37,7 @@ module.exports =  {
   },
   output: true,
   execute: function(inputs, block){
+    var customFunc;
     eval("customFunc = function(inp1, inp2, inp3, inp4, inp5){" + block.properties.code + "}");
     return customFunc(inputs.inp1, inputs.inp2, inputs.inp3, inputs.inp4, inputs.inp5);
   },
