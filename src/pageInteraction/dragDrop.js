@@ -71,7 +71,7 @@ $("#workspace").on("mousedown", ".block>.main,.block>.inputs", function(event){ 
   }
 });
 
-$("#workspace").on("mousedown", ".block>.main input,.block>.main textarea", function(event){ //allow for clicking a textbox
+$("#workspace").on("mousedown", ".block input,.block textarea", function(event){ //allow for clicking a textbox
   event.stopPropagation();
 });
 
